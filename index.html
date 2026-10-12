@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Calendario en Nest Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            padding: 40px;
+            margin: 0;
+        }
+        h1 { font-size: 2.5rem; color: #8ab4f8; }
+        .event-card {
+            background: #1e1e1e;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border-left: 6px solid #8ab4f8;
+        }
+        .event-time { font-size: 1.2rem; color: #bbbbbb; }
+        .event-title { font-size: 1.8rem; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>Próximos Eventos</h1>
+    <div id="calendar-events">Cargando eventos...</div>
+
+    <script>
+        // Nota: Para que esto funcione en producción con tus datos privados, 
+        // necesitarás configurar credenciales OAuth 2.0 en Google Cloud Console.
+        
+        async function cargarEventos() {
+            const contenedor = document.getElementById('calendar-events');
+            
+            // Simulación visual de cómo se renderizarían los datos que trae la API de Google Calendar:
+            // (Aquí conectarías tu token de acceso y harías el fetch a https://www.googleapis.com/calendar/v3/calendars/primary/events)
+            
+            const eventosFicticios = [
+                { summary: "Reunión de trabajo", start: "Hoy, 10:00 hs" },
+                { summary: "Com compras del super", start: "Hoy, 18:30 hs" },
+                { summary: "Cena con amigos", start: "Mañana, 21:00 hs" }
+            ];
+
+            contenedor.innerHTML = "";
+            eventosFicticios.forEach(ev => {
+                contenedor.innerHTML += `
+                    <div class="event-card">
+                        <div class="event-time">${ev.start}</div>
+                        <div class="event-title">${ev.summary}</div>
+                    </div>
+                `;
+            });
+        }
+
+    cargarEventos();
+    </script>
+</body>
+</html>
